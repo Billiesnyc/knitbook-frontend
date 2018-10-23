@@ -38,7 +38,7 @@ const renderIndividualPattern = function(pattern){
             </ul>
             <div class="btn-wrap">
                 <button id="add_to_favorites_button">Add to Favourites</button>
-                <button id="download_button">Download PDF</button>
+                <a href="images/PDFs/${pattern.download_url}" download target="_blank"><button id="download_button">Download PDF</button></a>
             </div>
     `
     patternCont.appendChild(colDiv);
@@ -65,8 +65,9 @@ document.addEventListener('click', event => {
 })
 
 document.addEventListener('click', event => {
-    event.preventDefault();
+    
     if (event.target.className === "back-button"){
+        
         event.preventDefault;
         API.getPatterns().then(renderPatterns)
     }
