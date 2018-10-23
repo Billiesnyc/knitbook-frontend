@@ -6,8 +6,8 @@ const renderPattern = function(pattern){
         const colDiv = document.createElement('div');
         colDiv.className = "col-3 text-center p-4";
         colDiv.innerHTML=`
-        <div class="pattern-image"><a href="#" id="${pattern.id}"><img src="images/${pattern.image_url}" width="100px" height="100px" id="${pattern.id}"></a></div> <br>
-        <div class="pattern-name"><a href="#" id="${pattern.id}">${pattern.name}</a></div>
+        <div class="pattern-image"><a href="#" id="${pattern.id}"><img src="images/${pattern.image_url}" width="100px" height="100px" id="${pattern.id}" class="pattern-image"></a></div> <br>
+        <div class="pattern-name"><a href="#" id="${pattern.id}" class="pattern-name">${pattern.name}</a></div>
         `
         patternCont.appendChild(colDiv);
 }
@@ -22,27 +22,43 @@ const renderIndividualPattern = function(pattern){
     backDiv.className = "col"
         backDiv.className = "col"
         backDiv.innerHTML = `<a class="back-button"> Back</a>`
-                backRow.appendChild(backDiv)
-              
-
+        backRow.appendChild(backDiv)
     const colDiv = document.createElement('div');
-    colDiv.className = "col-1 p-4";
+    colDiv.className = "row p-4";
     colDiv.innerHTML=`
-    <div class="pattern-image"><a href="#" id="${pattern.id}"><img src="images/${pattern.image_url}" id="${pattern.id}"></a></div> <br>
-    <div class="pattern-name"><a href="#" id="${pattern.id}">${pattern.name}</a></div>
+            <div class="col">
+                <img src="images/${pattern.image_url}" id="image">
+            </div>
+            <ul class="descriptions">
+                <li id="name">${pattern.name}</li>
+                <li id="difficulty">${pattern.difficulty}</li>
+                <li id="size">${pattern.size}</li>
+                <li id="favorite_count">${pattern.likes}</li>
+                <li id="created_by">${pattern.user}</li>
+            </ul>
+            <div class="btn-wrap">
+                <button id="add_to_favorites_button">Add to Favourites</button>
+                <button id="download_button">Download PDF</button>
+            </div>
     `
     patternCont.appendChild(colDiv);
 }
 
-clearPatterns = function(){
+const clearPatterns = function(){
     patternCont.innerHTML = " "
     backRow.innerHTML = " "
 }
 
+
+const findUserName = function(id){
+    API.getUser(id).then(console.log(user.name))
+}
+
 document.addEventListener('click', event => {
-    event.preventDefault();
-    if (event.target.className === "pattern-image" || "pattern-name"){
-        console.log(event.target.id);
+    if (event.target.className === 'pattern-image'){
+        patternCont.innerHTML = ""
+        API.getPattern(event.target.id).then(renderIndividualPattern)
+    } else if (event.target.className === 'pattern-name'){
         patternCont.innerHTML = ""
         API.getPattern(event.target.id).then(renderIndividualPattern)
     }
@@ -51,6 +67,7 @@ document.addEventListener('click', event => {
 document.addEventListener('click', event => {
     event.preventDefault();
     if (event.target.className === "back-button"){
+        event.preventDefault;
         API.getPatterns().then(renderPatterns)
     }
 })
