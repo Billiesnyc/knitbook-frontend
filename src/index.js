@@ -1,1 +1,1 @@
-API.getUsers()
+API.getPatterns().then(renderPatterns)
