@@ -24,22 +24,25 @@ const renderIndividualPattern = function(pattern){
         backDiv.innerHTML = `<a class="back-button"> Back</a>`
         backRow.appendChild(backDiv)
     const colDiv = document.createElement('div');
-    colDiv.className = "row p-4";
+    colDiv.className = "pattern_row p-4";
     colDiv.innerHTML=`
-            <div class="col">
+    <div class="pattern_row">
+        <h1 class="jumbotron-heading title">${pattern.name}</h1>
+            <div>
                 <img src="images/${pattern.image_url}" id="image">
-            </div>
+            </div><br>
+            
             <ul class="descriptions">
-                <li id="name">${pattern.name}</li>
-                <li id="difficulty">${pattern.difficulty}</li>
-                <li id="size">${pattern.size}</li>
-                <li id="favorite_count">${pattern.likes}</li>
-                <li id="created_by">${pattern.user}</li>
+                <p id="difficulty">Difficulty: ${pattern.difficulty}</p>
+                <p id="size">Size: ${pattern.size}</p>
+                <p id="created_by">Created by ${pattern.user_id}</p>
+                <p id="favorite_count">This pattern has been added to ${pattern.likes} users' favorites list.</p>
             </ul>
             <div class="btn-wrap">
-                <button id="add_to_favorites_button">Add to Favourites</button>
-                <a href="images/PDFs/${pattern.download_url}" download target="_blank"><button id="download_button">Download PDF</button></a>
+                <button id="add_to_favorites_button" class="button">Add to Favourites</button>
+                <a href="images/PDFs/${pattern.download_url}" download target="_blank"><button id="download_button" class="button">Download PDF</button></a>
             </div>
+    </div>
     `
     patternCont.appendChild(colDiv);
 }
