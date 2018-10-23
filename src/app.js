@@ -1,6 +1,6 @@
 class API {
     static init () {
-      this.baseUrl = 'http://localhost:3000/'
+      this.baseUrl = 'http://localhost:3000'
       this.usersUrl = `${this.baseUrl}/users`
       this.patternsUrl = `${this.baseUrl}/patterns`
     }
@@ -15,6 +15,15 @@ class API {
         .then(resp => resp.json())
     }
 
+    static getPatterns() {
+      return fetch(this.patternsUrl)
+        .then(resp => resp.json())
+    }
+
+    static getPattern (id) {
+      return fetch(`${this.patternsUrl}/${id}`)
+        .then(resp => resp.json())
+    }
     
   
     // static createQuote (quote, author, likes) {
