@@ -28,16 +28,17 @@ body {
 }
 
 .button {
-    color: #d6aff2;
+    color: #b5dafd;
     border-radius: 24px;
     background-color: #f294e9;
 }
 
 .button:hover {
     cursor: pointer;
-    background-color: #f294e9;
+    background-color: #eb33b4;
     color: #b5dafd
 }
+
 /* 
 .back-button {
     color: #f294e9;;
