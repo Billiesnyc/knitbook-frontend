@@ -1,5 +1,6 @@
 const patternCont = document.querySelector('.patternContent')
 const backRow = document.querySelector('.back-button')
+const filterForm = document.querySelector('.filter-form')
 
 const renderPattern = function(pattern){
     
@@ -17,6 +18,22 @@ const renderPattern = function(pattern){
 const renderPatterns = function(pattern) {
     clearPatterns();
     pattern.forEach(renderPattern)
+}
+
+const renderFilteredPatterns = function(pattern, filter, value){
+    clearPatterns();
+    if (filter === "difficulty"){
+    pattern.forEach(pattern => {
+        if (pattern.difficulty === value){
+            renderPattern(pattern)
+        }
+    })} else if (filter === "size"){
+        pattern.forEach(pattern => {
+            if (pattern.size === value){
+                renderPattern(pattern)
+            }
+        })
+    }
 }
 
 const renderIndividualPattern = function(pattern){
@@ -74,6 +91,24 @@ document.addEventListener('click', event => {
     if (event.target.className === "back-button"){
         
         event.preventDefault;
+        API.getPatterns().then(renderPatterns)
+    }
+})
+
+document.addEventListener('click', event => {
+    if (event.target.className === "filter-popup-button"){
+        const filterForm = document.querySelector(`#filter-form`)
+        const displayStyle = filterForm.style.display
+        filterForm.style.display = displayStyle === '' ? 'none' : ''
+    }
+})
+
+filterForm.addEventListener('change', event => {
+    API.getPatterns().then(patterns => renderFilteredPatterns(patterns, event.target.name, event.target.value))
+})
+
+filterForm.addEventListener('click', event => {
+    if (event.target.className === "reset-filters"){
         API.getPatterns().then(renderPatterns)
     }
 })
