@@ -1,15 +1,17 @@
 const selectTagUsers = document.querySelector('#userSelect')
+
 const selectDifficulty = document.querySelector('#difficultySelect')
 const selectSize = document.querySelector('#sizeSelect')
 
-// const allUsers = []
+const allUsers = []
 
 
-// API.getUsers().then(users => {
-//     users.forEach(user => {
-//         allUsers.push(user)
-//     })
-// })
+
+API.getUsers().then(users => {
+    users.forEach(user => {
+        allUsers.push(user)
+    })
+})
 
 function unique (array) {
   return array.filter(function(a){
