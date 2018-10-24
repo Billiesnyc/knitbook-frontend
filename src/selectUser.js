@@ -1,12 +1,12 @@
 const selectTagUsers = document.querySelector('#userSelect')
-// const allUsers = []
+const allUsers = []
 
 
-// API.getUsers().then(users => {
-//     users.forEach(user => {
-//         allUsers.push(user)
-//     })
-// })
+API.getUsers().then(users => {
+    users.forEach(user => {
+        allUsers.push(user)
+    })
+})
 
 function createUserOptions(users, select){
     users.forEach(userOpt => {

@@ -6,8 +6,10 @@ const renderPattern = function(pattern){
         const colDiv = document.createElement('div');
         colDiv.className = "col-3 text-center p-4";
         colDiv.innerHTML=`
+        <div class="card">
         <div class="pattern-image"><a href="#" id="${pattern.id}"><img src="images/${pattern.image_url}" width="100px" height="100px" id="${pattern.id}" class="pattern-image"></a></div> <br>
         <div class="pattern-name"><a href="#" id="${pattern.id}" class="pattern-name">${pattern.name}</a></div>
+        </div>
         `
         patternCont.appendChild(colDiv);
 }
@@ -21,7 +23,7 @@ const renderIndividualPattern = function(pattern){
     const backDiv = document.createElement('div');
     backDiv.className = "col"
         backDiv.className = "col"
-        backDiv.innerHTML = `<a class="back-button"> Back</a>`
+        backDiv.innerHTML = `<a class="back-button" id="back"> Back</a>`
         backRow.appendChild(backDiv)
     const colDiv = document.createElement('div');
     colDiv.className = "pattern_row p-4";
@@ -32,7 +34,7 @@ const renderIndividualPattern = function(pattern){
                 <img src="images/${pattern.image_url}" id="image">
             </div><br>
             
-            <ul class="descriptions">
+            <ul class="descriptions des">
                 <p id="difficulty">Difficulty: ${pattern.difficulty}</p>
                 <p id="size">Size: ${pattern.size}</p>
                 <p id="created_by">Created by ${pattern.user_id}</p>
