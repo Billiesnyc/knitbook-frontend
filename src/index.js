@@ -1,6 +1,6 @@
 const patternCont = document.querySelector('.patternContent')
-const backRow = document.querySelector('.back-button')
 const filterForm = document.querySelector('.filter-form')
+
 
 const renderPattern = function(pattern){
     
@@ -37,20 +37,22 @@ const renderFilteredPatterns = function(pattern, filter, value){
 }
 
 const renderIndividualPattern = function(pattern){
-    const backDiv = document.createElement('div');
-    backDiv.className = "col"
-        backDiv.className = "col"
-        backDiv.innerHTML = `<a class="back-button" id="back"> Back</a>`
-        backRow.appendChild(backDiv)
+        // let backButton = document.createElement('p')
+        // backButton.innerHTML = `<a class="back-button" id="back"> Back</a>`
+        // backDiv.appendChild(backButton)
+        // backRow.appendChild(backDiv)
+        
     const colDiv = document.createElement('div');
     colDiv.className = "pattern_row p-4";
     colDiv.innerHTML=`
-    <div class="pattern_row">
-        <h1 class="jumbotron-heading title">${pattern.name}</h1>
-            <div>
-                <img src="images/${pattern.image_url}" id="image">
+    <div class="pattern_row row ">
+        
+            <div class="col">
+                <img src="images/${pattern.image_url}" id="image"><br>
+                
             </div><br>
-            
+            <div class="col">
+            <h1 class="jumbotron-heading title">${pattern.name}</h1>
             <ul class="descriptions des">
                 <p id="difficulty">Difficulty: ${pattern.difficulty}</p>
                 <p id="size">Size: ${pattern.size}</p>
@@ -60,6 +62,8 @@ const renderIndividualPattern = function(pattern){
             <div class="btn-wrap">
                 <button id="add_to_favorites_button" class="button">Add to Favourites</button>
                 <a href="images/PDFs/${pattern.download_url}" download target="_blank"><button id="download_button" class="button">Download PDF</button></a>
+                <br><br><button class="button" id="back-button"> < Back to All Patterns</button>
+                </div>
             </div>
     </div>
     `
@@ -68,7 +72,7 @@ const renderIndividualPattern = function(pattern){
 
 const clearPatterns = function(){
     patternCont.innerHTML = " "
-    backRow.innerHTML = " "
+
 }
 
 
@@ -88,7 +92,7 @@ document.addEventListener('click', event => {
 
 document.addEventListener('click', event => {
     
-    if (event.target.className === "back-button"){
+    if (event.target.id === "back-button"){
         
         event.preventDefault;
         API.getPatterns().then(renderPatterns)
