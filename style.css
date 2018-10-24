@@ -54,7 +54,13 @@ body {
     color: #e3b6ec
 } */
 
-#userSelect{
+#userSelect, #difficultySelect, #sizeSelect{
+    /* color: #eb33b4; */
+    background-color: #e6b4eb;
+}
+
+
+#formButton{
     /* color: #eb33b4; */
     background-color: #e6b4eb;
 }
