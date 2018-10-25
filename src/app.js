@@ -25,6 +25,16 @@ class API {
         .then(resp => resp.json())
     }
     
+    static updateUserFavorites(userId, pattern) {
+      return fetch(`${this.usersUrl}/${userId}`, {
+          method: 'PATCH',
+          headers: { 
+              'Accept': 'application/json',
+              'Content-Type': 'application/json' 
+          },
+          body: JSON.stringify({favourites: pattern})
+      }).then(response => response.json())
+  }
   
     static createPattern (name, image_url, download_url, difficulty, size, likes, user_id) {
       // 'POST'

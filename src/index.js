@@ -1,6 +1,13 @@
 const patternCont = document.querySelector('.patternContent')
 const filterForm = document.querySelector('.filter-form')
 
+const allUsers = []
+
+API.getUsers().then(users => {
+    users.forEach(user => {
+        allUsers.push(user)
+    })
+})
 
 const renderPattern = function(pattern){
     
@@ -60,15 +67,47 @@ const renderIndividualPattern = function(pattern){
                 <p id="favorite_count">This pattern has been added to ${pattern.likes} users' favorites list.</p>
             </ul>
             <div class="btn-wrap">
-                <button id="add_to_favorites_button" class="button">Add to Favourites</button>
+                <button id="add_to_favorites_button_${pattern.id}" class="button">Add to Favourites</button>
                 <a href="images/PDFs/${pattern.download_url}" download target="_blank"><button id="download_button" class="button">Download PDF</button></a>
                 <br><br><button class="button" id="back-button"> < Back to All Patterns</button>
                 </div>
             </div>
     </div>
     `
+
+    const buttonEl = colDiv.querySelector(`#add_to_favorites_button_${pattern.id}`)
+    buttonEl.addEventListener('click', () => {
+        const selectedUser = allUsers.filter(user => user.id === selectTagUsers.options.selectedIndex)
+        console.log(selectedUser[0])
+
+        if(selectedUser){
+            addFavoritePattern(selectedUser, pattern, buttonEl)
+        }
+        // else { create an error ; user has to be selected}
+    })
     patternCont.appendChild(colDiv);
 }
+
+function addFavoritePattern(user, pattern, el){
+    const userUser = user[0]
+    const favoriteIndex = userUser.favourites.findIndex(patt => patt.id === pattern.id)
+    let newFavList
+    if (favoriteIndex<0){
+        newFavList = userUser.favourites.push(pattern)
+        const elButton = document.querySelector(`#add_to_favorites_button_${pattern.id}`)
+
+                if (elButton.innerText === 'Add to Favourites') {
+                    elButton.innerText = 'Remove from Favourites'
+                }
+        
+    } else if(chiffre>=0) {
+        newFavList = userUser.favourites.splice(chiffre, 1)
+        
+    }
+    API.updateUserFavorites(userUser.id, newFavList)
+    renderIndividualPattern(pattern)
+}
+
 
 const clearPatterns = function(){
     patternCont.innerHTML = " "
