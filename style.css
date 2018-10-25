@@ -40,20 +40,6 @@ body {
     color: #b5dafd
 }
 
-
-/* #back {
-    color: #e3b6ec;
-    border-radius: 35px;
-    background-color: #b5dafd;
-    font-weight: 700;
-}
-
-#back:hover {
-    cursor: pointer;
-    background-color: #3299fa;
-    color: #e3b6ec
-} */
-
 #userSelect, #difficultySelect, #sizeSelect{
     /* color: #eb33b4; */
     background-color: #e6b4eb;
