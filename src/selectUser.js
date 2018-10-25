@@ -1,10 +1,13 @@
 const selectTagUsers = document.querySelector('#userSelect')
-
 const selectDifficulty = document.querySelector('#difficultySelect')
 const selectSize = document.querySelector('#sizeSelect')
 
+const allUsers = []
+
+
 // const UserFavoritesButt = document.querySelector('.all-favorites-popup-button')
 // const addToFavoritesButt = document.querySelector('.add_favorite_button')
+
 
 
 // function addPatternToFavorite(){
@@ -46,7 +49,8 @@ function sizeUnique (patterns){
 function createUserOptions(users, select){
     users.forEach(userOpt => {
     const options = document.createElement('option')
-    options.innerHTML = `<option value="${userOpt.id}">${userOpt.name}!</option>`
+    options.id = `${userOpt.id}`
+    options.innerText = `${userOpt.name}!`
     select.appendChild(options)
     })
 }

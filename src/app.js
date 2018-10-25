@@ -36,19 +36,22 @@ class API {
       }).then(response => response.json())
   }
   
-    // static createQuote (quote, author, likes) {
-    //   // 'POST'
-    //   return fetch(this.baseUrl, {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({
-    //       'quote': quote,
-    //       'author': author,
-    //       'likes': likes
-    //     })
-    //   }).then(resp => resp.json())
-    //   .then(renderQuote)
-    // }
+    static createPattern (name, image_url, download_url, difficulty, size, likes, user_id) {
+      // 'POST'
+      return fetch(this.patternsUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          'name': name,
+          'image_url': image_url,
+          'download_url': download_url,
+          'difficulty': difficulty,
+          'size': size,
+          'likes': likes,
+          'user_id': user_id
+        })
+      }).then(resp => resp.json())
+    }
   
     // static deleteQuote (id) {
     //   return fetch(`${this.baseUrl}/${id}`, {

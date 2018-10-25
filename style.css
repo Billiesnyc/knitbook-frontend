@@ -40,15 +40,29 @@ body {
     color: #b5dafd
 }
 
-#userSelect, #difficultySelect, #sizeSelect{
+
+
+/* #back {
+    color: #e3b6ec;
+    border-radius: 35px;
+    background-color: #b5dafd;
+    font-weight: 700;
+}
+
+#back:hover {
+    cursor: pointer;
+    background-color: #3299fa;
+    color: #e3b6ec
+} */
+
+#userSelect, #difficultySelect, #sizeSelect, #upload, #formButton, #uploadButton{
     /* color: #eb33b4; */
     background-color: #e6b4eb;
 }
 
-
-#formButton{
+#submitButton, #cancelButton {
     /* color: #eb33b4; */
-    background-color: #e6b4eb;
+    background-color: #f294e9;
 }
 
 .card {
@@ -63,4 +77,17 @@ body {
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfilelabel {
+    cursor: pointer; /* "hand" cursor */
 }
