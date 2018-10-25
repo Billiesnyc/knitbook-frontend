@@ -1,8 +1,6 @@
 const selectTagUsers = document.querySelector('#userSelect')
-
 const selectDifficulty = document.querySelector('#difficultySelect')
 const selectSize = document.querySelector('#sizeSelect')
-
 const allUsers = []
 
 
@@ -38,7 +36,8 @@ function sizeUnique (patterns){
 function createUserOptions(users, select){
     users.forEach(userOpt => {
     const options = document.createElement('option')
-    options.innerHTML = `<option value="${userOpt.id}">${userOpt.name}!</option>`
+    options.id = `${userOpt.id}`
+    options.innerText = `${userOpt.name}!`
     select.appendChild(options)
     })
 }

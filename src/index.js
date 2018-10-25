@@ -113,6 +113,8 @@ filterForm.addEventListener('change', event => {
 
 filterForm.addEventListener('click', event => {
     if (event.target.className === "reset-filters"){
+        event.preventDefault;
+        clearPatterns();
         API.getPatterns().then(renderPatterns)
     }
 })
