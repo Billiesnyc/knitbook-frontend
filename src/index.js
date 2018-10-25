@@ -1,7 +1,7 @@
 const patternCont = document.querySelector('.patternContent')
 const filterForm = document.querySelector('.filter-form')
 
-const allUsers = []
+// const allUsers = []
 
 API.getUsers().then(users => {
     users.forEach(user => {
