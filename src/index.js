@@ -63,7 +63,7 @@ const renderIndividualPattern = function(pattern){
             <ul class="descriptions des">
                 <p id="difficulty">Difficulty: ${pattern.difficulty}</p>
                 <p id="size">Size: ${pattern.size}</p>
-                <p id="created_by">Created by ${pattern.user_id}</p>
+                <p id="created_by">Created by ${findUserName(pattern.user_id)}</p>
                 <p id="favorite_count">This pattern has been added to ${pattern.likes} users' favorites list.</p>
             </ul>
             <div class="btn-wrap">
@@ -116,7 +116,8 @@ const clearPatterns = function(){
 
 
 const findUserName = function(id){
-    API.getUser(id).then(console.log(user.name))
+    return allUsers.find(el => el.id === id).name
+
 }
 
 document.addEventListener('click', event => {
