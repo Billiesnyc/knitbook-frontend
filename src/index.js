@@ -105,8 +105,8 @@ function addFavoritePattern(user, pattern, el){
         newFavList = userUser.favourites.splice(chiffre, 1)
         
     }
-    API.updateUserFavorites(userUser.id, newFavList)
-    renderIndividualPattern(pattern)
+    API.updateUserFavorites(userUser.id, pattern.id)
+    
 }
 
 

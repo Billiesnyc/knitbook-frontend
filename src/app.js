@@ -3,6 +3,7 @@ class API {
       this.baseUrl = 'http://localhost:3000'
       this.usersUrl = `${this.baseUrl}/users`
       this.patternsUrl = `${this.baseUrl}/patterns`
+      this.favouritesUrl = `${this.baseUrl}/favourites`
     }
   
     static getUsers() {
@@ -25,14 +26,17 @@ class API {
         .then(resp => resp.json())
     }
     
-    static updateUserFavorites(userId, pattern) {
-      return fetch(`${this.usersUrl}/${userId}`, {
-          method: 'PATCH',
+    static updateUserFavorites(userId, patternId) {
+      return fetch(this.favouritesUrl, {
+          method: 'POST',
           headers: { 
               'Accept': 'application/json',
               'Content-Type': 'application/json' 
           },
-          body: JSON.stringify({favourites: pattern})
+          body: JSON.stringify({
+            user_id: userId,
+            pattern_id: patternId
+          })
       }).then(response => response.json())
   }
   
