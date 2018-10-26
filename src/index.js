@@ -13,8 +13,9 @@ const renderPattern = function(pattern){
     
         const colDiv = document.createElement('div');
         colDiv.className = "col-3 text-center p-4";
+        colDiv.id = pattern.id;
         colDiv.innerHTML=`
-        <div class="card">
+        <div class="card" id="${pattern.id}">
         <div class="pattern-image"><a href="#" id="${pattern.id}"><img src="images/${pattern.image_url}" width="100px" height="100px" id="${pattern.id}" class="pattern-image"></a></div> <br>
         <div class="pattern-name"><a href="#" id="${pattern.id}" class="pattern-name">${pattern.name}</a></div>
         </div>
@@ -125,6 +126,9 @@ document.addEventListener('click', event => {
         patternCont.innerHTML = ""
         API.getPattern(event.target.id).then(renderIndividualPattern)
     } else if (event.target.className === 'pattern-name'){
+        patternCont.innerHTML = ""
+        API.getPattern(event.target.id).then(renderIndividualPattern)
+    } else if (event.target.className === 'card'){
         patternCont.innerHTML = ""
         API.getPattern(event.target.id).then(renderIndividualPattern)
     }
